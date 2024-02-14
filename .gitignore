@@ -28,3 +28,4 @@ tempertureMonitaring/nb-configuration.xml
 */target/*
 */target/**
 **/META-INF/
+tempertureMonitaring/src/main/setup/glassfish-resources
