@@ -8,7 +8,7 @@
     <name>tempertureMonitaring-0.0.1</name>
     
     <properties>
-        <project.build.sourceEncoding>Shift_JIS</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakartaee.version>10.0.0</jakartaee.version>
         <primefaces.version>13.0.0</primefaces.version>
     </properties>
