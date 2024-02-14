@@ -9,14 +9,22 @@
     </h:head>
     <h:body>
         Hello from Facelets
-        
-        <h:outputText value="cccc" />
-        
-        <h:outputText value = "aaaa   #{testBean.getHoge()}" />
-        <h:outputText value = "bbbb   #{testBean.GetKeyword()}" />
-        
-        <p:link outcome="dtbasic" value="dtbasic">
-<!--            <f:param name="productId" value="10"/>-->
-        </p:link>
+        <div>
+            <h:outputText value="cccc" />
+        </div>
+        <div>
+            <h:outputText value = "aaaa   #{testBean.getHoge()}" />
+        </div>
+        <div>
+            <h:outputText value = "bbbb   #{testBean.GetKeyword()}" />
+        </div>
+        <div>
+            <p:link outcome="dtbasic" value="BasicDataTable">
+    <!--            <f:param name="productId" value="10"/>-->
+            </p:link>
+        </div>
+        <div>
+            <p:link outcome="barChart" value="BarChart" target="_blank"/>
+        </div>
     </h:body>
 </html>
