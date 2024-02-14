@@ -12,6 +12,8 @@ import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.charts.ChartData;
 import org.primefaces.model.charts.axes.cartesian.CartesianScales;
@@ -34,8 +36,12 @@ public class ChartJsView implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Getter
+    @Setter
     private BarChartModel barModel;
 
+    @Getter
+    @Setter
     private BarChartModel barModel2;
 
     @PostConstruct
@@ -204,21 +210,5 @@ public class ChartJsView implements Serializable {
                 "Item Index: " + event.getItemIndex() + ", DataSet Index:" + event.getDataSetIndex());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public BarChartModel getBarModel() {
-        return barModel;
-    }
-
-    public void setBarModel(BarChartModel barModel) {
-        this.barModel = barModel;
-    }
-
-    public BarChartModel getBarModel2() {
-        return barModel2;
-    }
-
-    public void setBarModel2(BarChartModel barModel2) {
-        this.barModel2 = barModel2;
     }
 }
