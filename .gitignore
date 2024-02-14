@@ -24,4 +24,7 @@ hs_err_pid*
 replay_pid*
 tempertureMonitaring/nb-configuration.xml
 
-tempertureMonitaring/target/*
+/target/
+*/target/*
+*/target/**
+**/META-INF/

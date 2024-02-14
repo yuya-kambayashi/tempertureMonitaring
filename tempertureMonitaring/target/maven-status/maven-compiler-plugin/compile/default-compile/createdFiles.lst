@@ -1,2 +1,5 @@
 com\mycompany\tempertureMonitaring\JakartaRestConfiguration.class
+com\mycompany\dtbasic\Product.class
+com\mycompany\ui\testBean.class
+com\mycompany\dtbasic\DtBasicView.class
 com\mycompany\tempertureMonitaring\resources\JakartaEE10Resource.class
