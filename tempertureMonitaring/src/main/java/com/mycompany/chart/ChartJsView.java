@@ -22,6 +22,9 @@ import org.primefaces.model.charts.axes.cartesian.linear.CartesianLinearTicks;
 import org.primefaces.model.charts.bar.BarChartDataSet;
 import org.primefaces.model.charts.bar.BarChartModel;
 import org.primefaces.model.charts.bar.BarChartOptions;
+import org.primefaces.model.charts.line.LineChartDataSet;
+import org.primefaces.model.charts.line.LineChartModel;
+import org.primefaces.model.charts.line.LineChartOptions;
 import org.primefaces.model.charts.optionconfig.animation.Animation;
 import org.primefaces.model.charts.optionconfig.legend.Legend;
 import org.primefaces.model.charts.optionconfig.legend.LegendLabel;
@@ -43,11 +46,21 @@ public class ChartJsView implements Serializable {
     @Getter
     @Setter
     private BarChartModel barModel2;
+    
+    @Getter
+    @Setter
+    private LineChartModel lineModel;
+
+    @Getter
+    @Setter
+    private LineChartModel cartesianLinerModel;
 
     @PostConstruct
     public void init() {
         createBarModel();
         createBarModel2();
+        createLineModel();
+        createCartesianLinerModel();
     }
 
   
@@ -203,6 +216,120 @@ public class ChartJsView implements Serializable {
         options.setTitle(title);
 
         barModel2.setOptions(options);
+    }
+    
+    public void createLineModel() {
+        lineModel = new LineChartModel();
+        ChartData data = new ChartData();
+
+        LineChartDataSet dataSet = new LineChartDataSet();
+        List<Object> values = new ArrayList<>();
+        values.add(65);
+        values.add(59);
+        values.add(80);
+        values.add(81);
+        values.add(56);
+        values.add(55);
+        values.add(40);
+        dataSet.setData(values);
+        dataSet.setFill(false);
+        dataSet.setLabel("My First Dataset");
+        dataSet.setBorderColor("rgb(75, 192, 192)");
+        dataSet.setTension(0.1);
+        data.addChartDataSet(dataSet);
+
+        List<String> labels = new ArrayList<>();
+        labels.add("January");
+        labels.add("February");
+        labels.add("March");
+        labels.add("April");
+        labels.add("May");
+        labels.add("June");
+        labels.add("July");
+        data.setLabels(labels);
+
+        //Options
+        LineChartOptions options = new LineChartOptions();
+        options.setMaintainAspectRatio(false);
+        Title title = new Title();
+        title.setDisplay(true);
+        title.setText("Line Chart");
+        options.setTitle(title);
+
+        Title subtitle = new Title();
+        subtitle.setDisplay(true);
+        subtitle.setText("Line Chart Subtitle");
+        options.setSubtitle(subtitle);
+
+        lineModel.setOptions(options);
+        lineModel.setData(data);
+    }
+    
+     public void createCartesianLinerModel() {
+        cartesianLinerModel = new LineChartModel();
+        ChartData data = new ChartData();
+
+        LineChartDataSet dataSet = new LineChartDataSet();
+        List<Object> values = new ArrayList<>();
+        values.add(20);
+        values.add(50);
+        values.add(100);
+        values.add(75);
+        values.add(25);
+        values.add(0);
+        dataSet.setData(values);
+        dataSet.setLabel("Left Dataset");
+        dataSet.setYaxisID("left-y-axis");
+        dataSet.setFill(true);
+        dataSet.setTension(0.5);
+
+        LineChartDataSet dataSet2 = new LineChartDataSet();
+        List<Object> values2 = new ArrayList<>();
+        values2.add(0.1);
+        values2.add(0.5);
+        values2.add(1.0);
+        values2.add(2.0);
+        values2.add(1.5);
+        values2.add(0);
+        dataSet2.setData(values2);
+        dataSet2.setLabel("Right Dataset");
+        dataSet2.setYaxisID("right-y-axis");
+        dataSet2.setFill(true);
+        dataSet2.setTension(0.5);
+
+        data.addChartDataSet(dataSet);
+        data.addChartDataSet(dataSet2);
+
+        List<String> labels = new ArrayList<>();
+        labels.add("Jan");
+        labels.add("Feb");
+        labels.add("Mar");
+        labels.add("Apr");
+        labels.add("May");
+        labels.add("Jun");
+        data.setLabels(labels);
+        cartesianLinerModel.setData(data);
+
+        //Options
+        LineChartOptions options = new LineChartOptions();
+        CartesianScales cScales = new CartesianScales();
+        CartesianLinearAxes linearAxes = new CartesianLinearAxes();
+        linearAxes.setId("left-y-axis");
+        linearAxes.setPosition("left");
+        CartesianLinearAxes linearAxes2 = new CartesianLinearAxes();
+        linearAxes2.setId("right-y-axis");
+        linearAxes2.setPosition("right");
+
+        cScales.addYAxesData(linearAxes);
+        cScales.addYAxesData(linearAxes2);
+        options.setScales(cScales);
+
+        Title title = new Title();
+        title.setDisplay(true);
+        title.setText("Cartesian Linear Chart");
+        options.setTitle(title);
+
+        cartesianLinerModel.setOptions(options);
     }
 
     public void itemSelect(ItemSelectEvent event) {
